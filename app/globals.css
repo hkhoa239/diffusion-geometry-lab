@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic colour tokens — one meaning per colour across all lessons. */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --surface-2: #f4f2ed;
+  --ink: #16150f;
+  --ink-2: #4f4d46;
+  --ink-3: #8a8780;
+  --line: #e6e3dc;
+  --grid: #eeece6;
+
+  --c-dist: #2a78d6;   /* probability distributions */
+  --c-dist-soft: rgba(42, 120, 214, 0.16);
+  --c-noise: #eb6834;  /* noisy data */
+  --c-noise-soft: rgba(235, 104, 52, 0.16);
+  --c-score: #6250d6;  /* score vectors */
+  --c-geo: #0f9d6b;    /* geodesic */
+  --c-euclid: #8a8984; /* Euclidean path */
+  --c-user: #d6487e;   /* user-drawn path */
+  --c-accent: #e09a00;
+}
+
+.dark {
+  --bg: #121210;
+  --surface: #1a1a18;
+  --surface-2: #232320;
+  --ink: #f2f0ea;
+  --ink-2: #c4c1b7;
+  --ink-3: #8f8c84;
+  --line: #2f2e2a;
+  --grid: #262622;
+
+  --c-dist: #4d93ea;
+  --c-dist-soft: rgba(77, 147, 234, 0.2);
+  --c-noise: #f07a49;
+  --c-noise-soft: rgba(240, 122, 73, 0.2);
+  --c-score: #9085e9;
+  --c-geo: #2fbf8a;
+  --c-euclid: #9a9890;
+  --c-user: #e8679b;
+  --c-accent: #f2b52a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-dist: var(--c-dist);
+  --color-noise: var(--c-noise);
+  --color-score: var(--c-score);
+  --color-geo: var(--c-geo);
+  --color-euclid: var(--c-euclid);
+  --color-user: var(--c-user);
+  --color-accent: var(--c-accent);
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+}
+
+html {
+  scrollbar-gutter: stable; /* no width jump when the page starts to scroll */
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Chart primitives */
+.axis text {
+  fill: var(--ink-3);
+  font-size: 11px;
+}
+.axis line,
+.axis path {
+  stroke: var(--line);
+}
+.gridline {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.chart-label {
+  fill: var(--ink-2);
+  font-size: 12px;
+}
+.handle {
+  cursor: grab;
+  touch-action: none;
+}
+.handle:active {
+  cursor: grabbing;
+}
+
+.katex {
+  font-size: 1.05em;
+}
+.dark .katex {
+  color: var(--ink);
+}
+
+/* Thin, quiet scrollbars for the side panels */
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 8px;
+}
